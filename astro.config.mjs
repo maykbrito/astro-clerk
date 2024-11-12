@@ -1,5 +1,11 @@
-// @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from 'astro/config'
+import node from '@astrojs/node'
+import clerk from '@clerk/astro'
 
-// https://astro.build/config
-export default defineConfig({});
+import tailwind from '@astrojs/tailwind';
+
+export default defineConfig({
+  integrations: [clerk(), tailwind()],
+  adapter: node({ mode: 'standalone' }),
+  output: 'server'
+})
